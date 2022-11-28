@@ -2,10 +2,10 @@
 CIS667-Project
 
 # Contents of This File
-Introduction
-Required dependencies
-Run the interactive domain program
-Run the computer experiments
+- Introduction
+- Required dependencies
+- Run the interactive domain program
+- Run the computer experiments
 
 # Introduction
 Roomba AI is a project that imitates the floor cleaning procedure conducted by a roomba. Users are allowed to manage the settings such as matrix size, roomba starting position, wall positions to view the cleaning procedure and evaluate the different outcomes. In the meanwhile, users can control the roomba’s next move by typing in information manually or let the AI do the job.
