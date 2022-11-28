@@ -12,7 +12,7 @@ Roomba AI is a project that simulates the floor cleaning procedure conducted by 
 
 # How to Install Required Dependencies?
 - Install Python
-** Type the following commands in the command prompt to check if your system does have python installed.
+* Type the following commands in the command prompt to check if your system does have python installed.
 python -v 
 or 
 python3 -v
