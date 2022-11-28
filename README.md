@@ -8,17 +8,17 @@ CIS667-Project
 - Run the computer experiments
 
 # Introduction
-Roomba AI is a project that imitates the floor cleaning procedure conducted by a roomba. Users are allowed to manage the settings such as matrix size, roomba starting position, wall positions to view the cleaning procedure and evaluate the different outcomes. In the meanwhile, users can control the roomba’s next move by typing in information manually or let the AI do the job.
+Roomba AI is a project that simulates the floor cleaning procedure conducted by a roomba. Users are allowed to manage the settings such as matrix size, roomba starting position, wall positions to view the cleaning procedure and evaluate the different outcomes. In the meanwhile, users can control the roomba’s next move by typing in information manually or letting the AI do the job.
 
 # How to Install Required Dependencies?
 Install Python
-Type the following commands in the command prompt to check is python and pip is installed on your system.
+Type the following commands in the command prompt to check if your system does have python installed.
 python -v 
 or 
 python3 -v
 If python is not detected in your system, you should install python first.
 Installing pip
-Type the following commands in the command prompt if your system does have pip installed.
+Type the following commands in the command prompt if your system does have matplotlib installed.
 sudo apt install python-pip
 or
 sudo3 apt install python-pip
@@ -31,7 +31,7 @@ pip install matplotlib
 
 # How to Run the Interactive Domain Program?
 Open terminal.
-Run python file “roomba_heuristic_code.py” in the project folder.
+Run the python file “roomba_heuristic_code.py” in the project folder.
 Select wall pattern for the domain (from 0 to 4).
 Select the size of matrix for the domain (from 3*3 to 15*15).
 Select the number of dirty squares (from 0 to 5).
@@ -46,4 +46,4 @@ Choose whether to run 5 predefined experiments or not.
 Note that it may take some time to generate histograms for the result of experiments.
 
 # How to Run the Computer Experiments?
-Right after the interactive domain program has finished and final score has shown on terminal, a command prompt “Run experiments? ” will appear. Type “Y”, “y” or press enter to run experiments automatically.
+Right after the interactive domain program has finished and the final score has shown in terminal, a command prompt “Run experiments? ” will appear. Type “Y”, “y” or press enter to run experiments automatically.
