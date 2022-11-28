@@ -11,21 +11,21 @@ CIS667-Project
 Roomba AI is a project that simulates the floor cleaning procedure conducted by a roomba. Users are allowed to manage the settings such as matrix size, roomba starting position, wall positions to view the cleaning procedure and evaluate the different outcomes. In the meanwhile, users can control the roomba’s next move by typing in information manually or letting the AI do the job.
 
 # How to Install Required Dependencies?
-Install Python
+- Install Python
 Type the following commands in the command prompt to check if your system does have python installed.
 python -v 
 or 
 python3 -v
 If python is not detected in your system, you should install python first.
-Installing pip
+- Installing pip
 Type the following commands in the command prompt if your system does have matplotlib installed.
 sudo apt install python-pip
 or
 sudo3 apt install python-pip
-Installing NumPy
+- Installing NumPy
 Type the following commands in the command prompt if your system does have bumpy installed.
 pip install numpy
-Install matplotlib
+- Install matplotlib
 Type the following commands in the command prompt if your system does have matplotlib installed.
 pip install matplotlib
 
