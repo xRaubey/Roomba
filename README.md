@@ -46,4 +46,4 @@ Right after the interactive domain program has finished and the final score has 
 
 # Team members
 - Yuqing Yang (yyang74@syr.edu)
-- Shaopeng Yang (syang32@syr.edu)
+- Shao-Peng Yang (syang32@syr.edu)
