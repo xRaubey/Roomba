@@ -6,6 +6,8 @@ CIS667-Project
 - Required dependencies
 - Run the interactive domain program
 - Run the computer experiments
+- Attribution
+- Team members
 
 # Introduction
 Roomba AI is a project that simulates the floor cleaning procedure conducted by a roomba. Users are allowed to manage the settings such as matrix size, roomba starting position, wall positions to view the cleaning procedure and evaluate the different outcomes. In the meanwhile, users can control the roomba’s next move by typing in information manually or letting the AI do the job.
@@ -45,9 +47,7 @@ Roomba AI is a project that simulates the floor cleaning procedure conducted by 
 Right after the interactive domain program has finished and the final score has shown in terminal, a command prompt “Run experiments? ” will appear. Type “Y”, “y” or press enter to run experiments automatically.
 
 # Attribution
-
-HW2 Problem 7 Source Cod, CIS 667: Introduction to Artificial Intelligence (Fall 2022), Professor Garrett Katz, Syracuse University
-*source code
+HW2 Problem 7 Source Code, CIS 667: Introduction to Artificial Intelligence (Fall 2022), Professor Garrett Katz, Syracuse University
 
 # Team members
 - Yuqing Yang (yyang74@syr.edu)
