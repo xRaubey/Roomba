@@ -44,6 +44,11 @@ Roomba AI is a project that simulates the floor cleaning procedure conducted by 
 # How to Run the Computer Experiments?
 Right after the interactive domain program has finished and the final score has shown in terminal, a command prompt “Run experiments? ” will appear. Type “Y”, “y” or press enter to run experiments automatically.
 
+# Attribution
+
+HW2 Problem 7 Source Cod, CIS 667: Introduction to Artificial Intelligence (Fall 2022), Professor Garrett Katz, Syracuse University
+*source code
+
 # Team members
 - Yuqing Yang (yyang74@syr.edu)
 - Shao-Peng Yang (syang32@syr.edu)
