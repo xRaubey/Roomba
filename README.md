@@ -49,6 +49,6 @@ Right after the interactive domain program has finished and the final score has 
 # Attribution
 HW2 Problem 7 Source Code, CIS 667: Introduction to Artificial Intelligence (Fall 2022), Professor Garrett Katz, Syracuse University
 
-# Team members
+# Team Members
 - Yuqing Yang (yyang74@syr.edu)
 - Shao-Peng Yang (syang32@syr.edu)
