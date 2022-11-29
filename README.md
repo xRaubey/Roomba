@@ -13,17 +13,17 @@ Roomba AI is a project that simulates the floor cleaning procedure conducted by 
 # How to Install Required Dependencies?
 - Install Python
   - Type the following commands in the command prompt to check if your system does have python installed.
-   ```python -v or python3 -v ```
-If python is not detected in your system, you should install python first.
+   ```python -v ``` or ```python3 -v ```
+  - If python is not detected in your system, you should install python first.
 - Installing pip
   - Type the following commands in the command prompt if your system does have matplotlib installed.
-   - sudo apt install python-pip or sudo3 apt install python-pip
+   - ```sudo apt install python-pip``` or ```sudo3 apt install python-pip```
 - Installing NumPy
   - Type the following commands in the command prompt if your system does have bumpy installed.
-   - pip install numpy
+   - ```pip install numpy```
 - Install matplotlib
   - Type the following commands in the command prompt if your system does have matplotlib installed.
-   - pip install matplotlib
+   - ```pip install matplotlib```
 
 # How to Run the Interactive Domain Program?
 Open terminal.
