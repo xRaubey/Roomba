@@ -777,11 +777,11 @@ if __name__ == "__main__":
             max_step = 2*len(plan_NN)
             game_over = False
             if(mode == 'ai_NN1'):
-                print('(Tree + NN AI2): ', 100-iterator)
+                print('(Tree + NN1): ', 100-iterator)
             elif(mode == 'ai_NN2'):
-                print('(Tree + NN AI2): ', 100-iterator)
+                print('(Tree + NN2): ', 100-iterator)
             else:
-                print('(Tree + NN AI): ', 100-iterator)
+                print('(Tree + NN): ', 100-iterator)
             states = [problem_experiment.initial_state]
             g,r,c,p = domain.unpack(problem_experiment.initial_state)
 
@@ -830,38 +830,45 @@ if __name__ == "__main__":
             # node_processed, final_score_baseline, final_score = result_set[i]
             node_processed, final_score_baseline, final_score = result_set[i]
             plt.subplot(row,col,i*col+1)
-            plt.hist(final_score_baseline, label= 'score (baseline)', bins=max(final_score_baseline)+1, align='mid' ,edgecolor='black')
+            plt.hist(final_score_baseline, label= 'score (baseline)', bins=max(final_score_baseline)-min(final_score_baseline)+1, align='mid' ,edgecolor='black')
             plt.xlabel('Score (baseline)')
             plt.ylabel('Amount')
 
             plt.subplot(row,col,i*col+2)
-            plt.hist(final_score, label= 'score (Tree-based AI)', bins=max(final_score)+1, align='mid' ,edgecolor='black')
+            plt.hist(final_score, label= 'score (Tree-based AI)', bins=max(final_score)-min(final_score)+1, align='mid' ,edgecolor='black')
             plt.xlabel('Score (Tree-based AI)')
             plt.ylabel('Amount')
 
             plt.subplot(row,col,i*col+3)
-            plt.hist(node_processed, label= '# of nodes processed (Tree-based AI)', bins=max(node_processed)+1, align='mid' ,edgecolor='black')
+            plt.hist(node_processed, label= '# of nodes processed (Tree-based AI)', bins=max(node_processed)-min(node_processed)+1, align='mid' ,edgecolor='black')
             plt.xlabel('Number of nodes processed')
             plt.ylabel('Amount')
 
+
         plt.subplot(row,col,16)
-        plt.hist(final_score_NN1, label= 'score (Tree-based + NN1)', bins=max(final_score_NN1)+1, align='mid' ,edgecolor='black')
-        plt.xlabel('Score (Tree-based + NN1)')
+        if(mode =='ai_NN1'):
+            plt.hist(final_score_NN1, label= 'score (Tree-based + NN1)', bins=max(final_score_NN1)-min(final_score_NN1)+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Score (Tree-based + NN1)')
+        elif(mode =='ai_NN2'):
+            plt.hist(final_score_NN1, label= 'score (Tree-based + NN2)', bins=max(final_score_NN1)-min(final_score_NN1)+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Score (Tree-based + NN2)')
+        else:
+            plt.hist(final_score_NN1, label= 'score (Tree-based + NN)', bins=max(final_score_NN1)-min(final_score_NN1)+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Score (Tree-based + NN)')
         plt.ylabel('Amount')
 
         plt.subplot(row,col,17)
-        if(mode == 'ai_NN1'):
-            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN1)', bins=max(node_processed_NN)+1, align='mid' ,edgecolor='black')
-            plt.xlabel('Number of nodes processed (Tree-base + NN1')
-            plt.ylabel('Amount')
-        elif(mode == 'ai_NN2'):
-            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN2)', bins=max(node_processed_NN)+1, align='mid' ,edgecolor='black')
-            plt.xlabel('Number of nodes processed (Tree-base + NN2')
-            plt.ylabel('Amount')
+        if(mode =='ai_NN1'):
+            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN1)', bins=(max(node_processed_NN)-min(node_processed_NN))+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Number of nodes processed (Tree-base + NN1)')
+        elif(mode =='ai_NN2'):
+            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN2)', bins=(max(node_processed_NN)-min(node_processed_NN))+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Number of nodes processed (Tree-base + NN)')
         else:
-            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN)', bins=max(node_processed_NN)+1, align='mid' ,edgecolor='black')
-            plt.xlabel('Number of nodes processed (Tree-base + NN')
-            plt.ylabel('Amount')
+            plt.hist(node_processed_NN, label= '# of nodes processed (Tree-based + NN)', bins=(max(node_processed_NN)-min(node_processed_NN))+1, align='mid' ,edgecolor='black')
+            plt.xlabel('Number of nodes processed (Tree-base + NN)')
+        plt.ylabel('Amount')
+
 
         
         plt.show()
