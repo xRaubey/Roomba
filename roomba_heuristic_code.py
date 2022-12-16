@@ -15,9 +15,9 @@ OBJ_amount = 7
 DATA_SIZE = 1000
 
 class LinNet(tr.nn.Module):
-    def __init__(self, size, hid_features):
+    def __init__(self, li_size, hid_features):
         super(LinNet, self).__init__()
-        self.to_hidden = tr.nn.Linear(OBJ_amount*size**2, hid_features)
+        self.to_hidden = tr.nn.Linear(OBJ_amount*li_size**2, hid_features)
         self.to_output = tr.nn.Linear(hid_features, 1)
 
         # self.to_output = tr.nn.Linear(OBJ_amount*size**2, 1)
@@ -30,10 +30,10 @@ class LinNet(tr.nn.Module):
         return y
 
 class ConvNet(tr.nn.Module):
-    def __init__(self, size, hid_features):
+    def __init__(self, cv_size, hid_features):
         super(ConvNet, self).__init__()
         self.to_hidden = tr.nn.Conv2d(OBJ_amount, hid_features, 2)
-        self.to_output = tr.nn.Linear(hid_features*(size-1)**2, 1)
+        self.to_output = tr.nn.Linear(hid_features*(cv_size-1)**2, 1)
     def forward(self, x):
         # h = tr.relu(self.to_hidden(x))
         # y = tr.tanh(self.to_output(h.reshape(x.shape[0],-1)))
@@ -65,9 +65,9 @@ SIZEL = [6,7,8,9,10]
 
 class RoombaDomain:
     
-    def __init__(self, pattern, size, net = None, net2 = None):
-        self.roomba_size = size
-        SIZE = size
+    def __init__(self, pattern, rb_size, net = None, net2 = None):
+        self.roomba_size = rb_size
+        SIZE = self.roomba_size
         # deterministic grid world
         num_rows, num_cols = SIZE, SIZE
         grid = CLEAN*np.ones((num_rows, num_cols), dtype=int)
@@ -369,20 +369,20 @@ if __name__ == "__main__":
     def random_state():
 
         # set the size here for NN ai
-        size = NN_size
-        r = random.randint(0,size-1)
-        c = random.randint(0,size-1)
+        nn_size = NN_size
+        r = random.randint(0,nn_size-1)
+        c = random.randint(0,nn_size-1)
         pattern = random.randint(0,4)
         dirty_num = random.randint(1,5)
 
         charger_amount = 4
-        wall_amount = (2*(size-2))-1
+        wall_amount = (2*(nn_size-2))-1
 
-        if pow(size,2)-dirty_num-charger_amount-wall_amount >= 0:
-            carpet_num = random.randint(0,pow(size,2)-dirty_num-charger_amount-wall_amount)
+        if pow(nn_size,2)-dirty_num-charger_amount-wall_amount >= 0:
+            carpet_num = random.randint(0,pow(nn_size,2)-dirty_num-charger_amount-wall_amount)
         else:
             carpet_num = 0
-        state = (pattern,r,c,dirty_num,carpet_num,size)
+        state = (pattern,r,c,dirty_num,carpet_num,nn_size)
         return state
 
     def generate_dataset():
@@ -391,9 +391,9 @@ if __name__ == "__main__":
         # size of dataset, should be 1000
         while(len(state_cost)<DATA_SIZE):
 
-            pattern,r,c,dirty_num,carpet_num,size = random_state()
+            pattern,r,c,dirty_num,carpet_num,size_rs = random_state()
 
-            domain = RoombaDomain(pattern, size)
+            domain = RoombaDomain(pattern, size_rs)
             
             example = domain.initial_state(
             roomba_position = (r, c),
@@ -413,7 +413,7 @@ if __name__ == "__main__":
             grids = [g]
             roomba_position = [(r,c)]
 
-            rp_grid = np.zeros([size,size])
+            rp_grid = np.zeros([size_rs,size_rs])
             rp_grid[r,c] = 4
             rp_grids = [rp_grid]
 
@@ -478,15 +478,15 @@ if __name__ == "__main__":
 
     # NN configuration 1  -- Learning Rate = 0.001 and hid_features = 16
     if(mode == 'ai_NN1'):
-        net = LinNet(size=NN_size, hid_features=16)
+        net = LinNet(li_size=NN_size, hid_features=16)
         optimizer = tr.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
     # NN configuration 2 -- Learning Rate = 0.0005 and hid_features = 32
     elif(mode == 'ai_NN2'):
-        net = LinNet(size=NN_size, hid_features=32)
+        net = LinNet(li_size=NN_size, hid_features=32)
         optimizer = tr.optim.SGD(net.parameters(), lr=0.0005, momentum=0.9)
     else:
-        net = LinNet(size=NN_size, hid_features=16)
+        net = LinNet(li_size=NN_size, hid_features=16)
         optimizer = tr.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
 
     states, utilities, roomba_positions, roomba_grids = zip(*training_examples)
@@ -550,7 +550,7 @@ if __name__ == "__main__":
 
 
     # set up initial state by making five random open positions dirty
-    domain = RoombaDomain(pattern, size, net)
+    domain = RoombaDomain(pattern, user_input_size, net)
 
     init = domain.initial_state(
         roomba_position = (r, c),
@@ -658,11 +658,11 @@ if __name__ == "__main__":
 
     # --- Evaluation ---
 
-    def run_ex_by_id (domain, size, id):
+    def run_ex_by_id (domain, ex_size, id):
 
         # domain =_domain
 
-        experiment_size = size
+        experiment_size = ex_size
         iterator = 100
         
         node_processed = []
@@ -812,12 +812,12 @@ if __name__ == "__main__":
 
         result_set = []
         for i in range(5):
-            pattern, size = experiment[0]
-            domain = RoombaDomain(pattern, size)
+            pattern, ex_size = experiment[0]
+            domain = RoombaDomain(pattern, ex_size)
 
-            print('- Domain: ',i,' - Patter: ',pattern, ' - Size: ', size )
+            print('- Domain: ',i,' - Patter: ',pattern, ' - Size: ', ex_size )
 
-            result_set.append(run_ex_by_id(domain, size, i))
+            result_set.append(run_ex_by_id(domain, ex_size, i))
 
         node_processed_NN, final_score_NN1 = run_nn(net)
 
