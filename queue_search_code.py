@@ -5,6 +5,7 @@ from collections import deque
 # Similar code to queue search lecture notebook
 # Only part you need to change is in the queue_search method below
 
+
 class SearchNode(object):
     def __init__(self, problem, state, parent=None, action=None, step_cost=0, depth=0):
         self.problem = problem
@@ -106,6 +107,7 @@ def queue_search(frontier, problem):
     
 
     max_step = 500000
+
     while frontier.is_not_empty():
         node = frontier.pop() # need to count how many times this happens
         c=c+1
